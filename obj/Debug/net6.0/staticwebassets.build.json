@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "MObHJjYiWImpzZrC3DeY8gfYYY/uGYmNTCUbLLIpQh0=",
+  "Source": "OpsCenterApi",
+  "BasePath": "_content/OpsCenterApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
