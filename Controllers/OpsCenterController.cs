@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OpsCenterApi.Model;
+using Newtonsoft.Json;
+
+using System.Text.Json;
+using System.Text.Json.Serialization;
 namespace OpsCenterApi.Controllers
 {
     [Route("api/[controller]")]
@@ -49,14 +53,17 @@ namespace OpsCenterApi.Controllers
 
         //     return await query.ToListAsync();
         // }
-         [HttpGet]
-        public async Task<ActionResult<List<OpsCenter>>> GetAction([FromServices] OpsCenterContext db)
+//          
+[HttpGet]
+        public async Task<ActionResult<IEnumerable<OpsCenter>>> GetAll()
         {
-            Console.WriteLine("inside cont");
-            var opsCenter = await db.OpsCenters.ToListAsync();
-            return opsCenter;
- 
+            var res = await _db.OpsCenters.ToListAsync();
+             Console.WriteLine(" inside Control"+_db.OpsCenters.ToListAsync());
+            Console.WriteLine(" inside Control111 : "+JsonConvert.SerializeObject(res, Formatting.Indented));
+            return await _db.OpsCenters.ToListAsync();
         }
+        
+
         // POST api/animals
         [HttpPost]
         public async Task<ActionResult<OpsCenter>> Post(OpsCenter opsCenter)
